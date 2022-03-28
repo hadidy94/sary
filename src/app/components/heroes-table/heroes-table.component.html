@@ -1,0 +1,46 @@
+<div class="tab_head d-flex align-items-center bg-white border">
+  <div class="title">
+    <h4 class="m-0">Heroes</h4>
+  </div>
+  <div class="filterSearch">
+    <input
+      class="searchTerm form-control shadow-none border-0 border-bottom"
+      type="text"
+      name="searchTerm"
+      placeholder="Filter by country name"
+      [(ngModel)]="searchTerm"
+    />
+    <fa-icon [icon]="faSearch"></fa-icon>
+  </div>
+  <div class="sorting">
+    <button type="button" class="border-0 border-bottom shadow-none bg-white"[appSort]="Heroes" data-order="asc" data-name="name">
+      <fa-icon [icon]="faSortAmountDownAlt"></fa-icon>
+    </button>
+  </div>
+
+</div>
+
+<div class="table-responsive bg-white shadow-sm">
+  <table class="table table-bordered mb-0">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Email</th>
+        <th scope="col">Date</th>
+        <th scope="col">Country</th>
+        <th scope="col">Company</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hero of Heroes | searchFilter: searchTerm; index as i">
+        <th>{{ hero.name }}</th>
+        <td>{{ hero.phone }}</td>
+        <td>{{ hero.email }}</td>
+        <td>{{ hero.date }}</td>
+        <td>{{ hero.country }}</td>
+        <td>{{ hero.company }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

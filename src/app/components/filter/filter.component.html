@@ -1,0 +1,47 @@
+<div class="accordion-item">
+  <h1 class="accordion-header text-center w-100 fw-bold py-4" id="headingOne" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+    FILTERS
+  </h1>
+  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+    <div class="accordion-body">
+      <div class="py-4 border-top">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div *ngFor="let control of filterConfig" ngClass="form-floating mb-4">
+            <input
+              ngClass="form-control border-0 border-bottom shadow-none"
+              id="{{ control.title }}"
+              placeholder="{{ control.title }}"
+              *ngIf="
+                [
+                  'text',
+                  'date'
+                ].includes(control.type)
+              "
+              [type]="control.type"
+              [formControlName]="control.title |lowercase"
+            />
+
+            <select
+              id="{{ control.title }}"
+              class="form-control border-0 border-bottom shadow-none"
+              *ngIf="control.type === 'dropdown'"
+              [formControlName]="control.title |lowercase"
+            >
+              <option value="USA">USA</option>
+              <option value="KSA">KSA</option>
+              <option value="EGYPT">EGYPT</option>
+            </select>
+
+            <label for="{{ control.title }}">{{ control.title }}</label>
+          </div>
+
+          <div class="form-floating mb-4 text-center">
+            <button class="btn btn-primary btn-lg"><fa-icon [icon]="faSortAmountDownAlt"></fa-icon> Filter</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

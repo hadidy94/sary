@@ -1,0 +1,23 @@
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+.mat-expansion-panel-header.mat-expanded {
+  height: auto;
+}
+.mat-expansion-panel-header{
+  height: auto;
+}
+mat-panel-title {
+  h1 {
+    font-size: 50px;
+    letter-spacing: 2px;
+  }
+}
+
+.form-control{
+  border-radius: 0;
+  &:focus
+  {
+    border-bottom: 2px solid rgb(52, 93, 230) !important;
+  }
+}
